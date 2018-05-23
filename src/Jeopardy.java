@@ -77,13 +77,7 @@ public class Jeopardy implements ActionListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	/*
-	 * 13. Use the method provided to play the Jeopardy theme music 
-	 *  
-	 * 14. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
-	 *
-	 * [optional] Use the showImage or playSound methods when the user answers a question 
-	 */
+
 	
 	private JButton createButton(String dollarAmount) {
 		// Create a new JButton
@@ -102,16 +96,24 @@ public class Jeopardy implements ActionListener {
 		JOptionPane.showMessageDialog(null,"pressed " + ((JButton)arg0.getSource()).getText() + " button");
 
 		// Use the method that plays the jeopardy theme music.
-
+		
 		JButton buttonPressed = (JButton) arg0.getSource();
 		// If the buttonPressed was the firstButton
+		if (buttonPressed== firstButton ) {
+			playJeopardyTheme();
 		
 			// Call the askQuestion() method
-			askQuestion();
+			askQuestion("What is 1+1", "2",200);
 			// Fill in the askQuestion() method. When you play the game, the score should change.
-		
+	}
 		// Or if the buttonPressed was the secondButton
-
+		if (buttonPressed== secondButton ) {
+			playJeopardyTheme();
+			
+					askQuestion("2+2=4-1 thats _ Quick Maths", "3",400);
+					
+			// Fill in the askQuestion() method. When you play the game, the score should change.
+	}
 
 			// Call the askQuestion() method with a harder question
 			
@@ -132,15 +134,16 @@ public class Jeopardy implements ActionListener {
 			updateScore();
 			
 			// Pop up a message to tell the user they were correct
+			JOptionPane.showMessageDialog(null, "Allright! You got: " + prizeMoney + " dollars!");
 		} else {
 		// Otherwise
 		
 			// Decrement the score by the prizeMoney
 			score+=prizeMoney;
 			// Pop up a message to tell the user the correct answer
-			JOptionPane.show
+			JOptionPane.showMessageDialog(null, "Sorry... the real answer is : " + correctAnswer);
 			// Call the updateScore() method
-			
+			updateScore();
 		}
 	}
 
